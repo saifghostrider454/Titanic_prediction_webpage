@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Titanic Survival Prediction</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1580075305424-b0290f5d110a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin: 10px 0 5px;
+            color: #333;
+            align-self: flex-start;
+        }
+        input, select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            background-color: #f9f9f9;
+        }
+        input[type="submit"] {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #357ABD;
+        }
+        .prediction-text {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Titanic Survival Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="Pclass">Passenger Class (Pclass):</label>
+            <select name="Pclass" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            
+            <label for="Sex">Gender (Sex):</label>
+            <select name="Sex" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            
+            <label for="Age">Age:</label>
+            <input type="number" name="Age" step="0.1" required>
+            
+            <label for="SibSp">Number of Siblings/Spouses (SibSp):</label>
+            <select name="SibSp" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+            
+            <label for="Parch">Number of Parents/Children (Parch):</label>
+            <input type="number" name="Parch" required>
+            
+            <label for="Fare">Ticket Fare (Fare):</label>
+            <input type="number" name="Fare" step="0.01" required>
+            
+            <label for="Embarked">Port of Embarkation (Embarked):</label>
+            <select name="Embarked" required>
+                <option value="S">Southampton</option>
+                <option value="C">Cherbourg</option>
+                <option value="Q">Queenstown</option>
+            </select>
+            
+            <input type="submit" value="Predict">
+        </form>
+        <div class="prediction-text">{{ prediction_text }}</div>
+        <div class="footer">
+            <p>© 2024 Titanic Prediction Project (Created by Saif). All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
